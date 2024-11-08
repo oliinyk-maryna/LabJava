@@ -5,7 +5,7 @@ import java.util.Objects;
 /**
  * Class representing a Renter in the rental system.
  */
-public class Renter {
+public class Renter implements Comparable<Renter> {
     private String firstName;
     private String lastName;
     private String identityDocument;
@@ -43,21 +43,6 @@ public class Renter {
     }
 
     /**
-     * Provides a string representation of the Renter object.
-     *
-     * @return A formatted string with the renter's details.
-     */
-    @Override
-    public String toString() {
-        return "Renter{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", identityDocument='" + identityDocument + '\'' +
-                ", driversLicense='" + driversLicense + '\'' +
-                '}';
-    }
-
-    /**
      * Compares this renter to the specified object.
      *
      * @param o the object to compare this Renter against
@@ -82,5 +67,23 @@ public class Renter {
     @Override
     public int hashCode() {
         return Objects.hash(firstName, lastName, identityDocument, driversLicense);
+    }
+
+    /**
+     * Compares this Renter to another Renter based on multiple criteria.
+     *
+     * @param other the other Renter to compare to
+     * @return a negative integer, zero, or a positive integer as this Renter is less than, equal to, or greater than the specified Renter
+     */
+    @Override
+    public int compareTo(Renter other) {
+        // Спочатку порівнюємо за прізвищем
+        int lastNameComparison = this.lastName.compareToIgnoreCase(other.lastName);
+        if (lastNameComparison != 0) {
+            return lastNameComparison; // Якщо прізвища різні, повертаємо результат порівняння
+        }
+
+        // Якщо прізвища однакові, порівнюємо за ім'ям
+        return this.firstName.compareToIgnoreCase(other.firstName);
     }
 }

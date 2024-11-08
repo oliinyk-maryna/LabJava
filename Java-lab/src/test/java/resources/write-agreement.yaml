@@ -1,0 +1,23 @@
+---
+getCar:
+  manufacturer: "Toyota"
+  brand: "Corolla"
+  type: "Sedan"
+  color: "Red"
+  costPerDay: 50.0
+  vinCode: "VIN123"
+  releaseYear: 2022
+  id: "04b4d17d-2e06-4d9d-9ce0-81df780a9704"
+  created_at: "2024-11-08T13:28:21.2817649"
+renter:
+  firstName: "John"
+  lastName: "Doe"
+  identityDocument: "ID123"
+  driversLicense: "DL123"
+startDate: "2024-01-15"
+endDate: "2024-01-20"
+payment:
+  paymentMethod: "CREDIT_CARD"
+  amount: 250.0
+id: "96792c1e-6595-4538-b57c-0eeb637029ac"
+totalPrice: 250.0

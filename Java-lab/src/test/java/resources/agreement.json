@@ -1,0 +1,40 @@
+[
+  {
+    "car": {
+      "manufacturer": "Toyota",
+      "brand": "Corolla",
+      "type": "Sedan",
+      "color": "Red",
+      "costPerDay": 50.0,
+      "vinCode": "VIN123",
+      "releaseYear": 2022
+    },
+    "renter": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "identityDocument": "ID123",
+      "driversLicense": "DL123"
+    },
+    "startDate": "2024-02-15",
+    "endDate": "2024-02-20"
+  },
+  {
+    "car": {
+      "manufacturer": "Honda",
+      "brand": "Civic",
+      "type": "Sedan",
+      "color": "Blue",
+      "costPerDay": 45.0,
+      "vinCode": "VIN124",
+      "releaseYear": 2021
+    },
+    "renter": {
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "identityDocument": "ID124",
+      "driversLicense": "DL124"
+    },
+    "startDate": "2024-02-10",
+    "endDate": "2024-02-15"
+  }
+]

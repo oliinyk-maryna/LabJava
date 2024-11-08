@@ -167,12 +167,18 @@ public class Car implements Comparable<Car> {
 
     @Override
     public int compareTo(Car other) {
-        // Compare by release year first
-        int yearComparison = Integer.compare(this.releaseYear, other.releaseYear);
-        if (yearComparison != 0) {
-            return yearComparison;
+
+        int result = Integer.compare(this.releaseYear, other.releaseYear);
+        if (result != 0) {
+            return result;
         }
-        // If release years are the same, compare by brand alphabetically
-        return this.brand.compareTo(other.brand);
+
+        result = this.brand.compareTo(other.brand);
+        if (result != 0) {
+            return result;
+        }
+
+        return this.vinCode.compareTo(other.vinCode);
     }
+
 }

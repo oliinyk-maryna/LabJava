@@ -1,8 +1,9 @@
-package lab03;
+package lab04;
 
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.Objects;
 
 /**
  * Class representing a Renter in the rental system.

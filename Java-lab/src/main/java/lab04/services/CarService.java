@@ -1,13 +1,14 @@
-package lab02.services;
+package lab04.services;
 
-import lab02.Car;
+import lab05.Car;
 
-import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.Comparator;
-import java.time.LocalDateTime;
 
+/**
+ * CarService provides methods for operations on collections of Car objects.
+ */
 public class CarService {
 
     private List<Car> cars;

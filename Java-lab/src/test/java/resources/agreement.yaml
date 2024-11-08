@@ -1,0 +1,35 @@
+- car:
+    manufacturer: Toyota
+    brand: Corolla
+    type: Sedan
+    color: Red
+    costPerDay: 50.0
+    vinCode: VIN123
+    releaseYear: 2022
+  renter:
+    firstName: John
+    lastName: Doe
+    identityDocument: ID123
+    driversLicense: DL123
+  startDate: 2024-01-15
+  endDate: 2024-01-20
+  payment:
+    paymentMethod: CREDIT_CARD
+
+- car:
+    manufacturer: Honda
+    brand: Civic
+    type: Sedan
+    color: Blue
+    costPerDay: 55.0
+    vinCode: VIN456
+    releaseYear: 2021
+  renter:
+    firstName: Jane
+    lastName: Smith
+    identityDocument: ID456
+    driversLicense: DL456
+  startDate: 2024-02-01
+  endDate: 2024-02-05
+  payment:
+    paymentMethod: DEBIT_CARD

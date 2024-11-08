@@ -1,0 +1,10 @@
+---
+manufacturer: "Toyota"
+brand: "Corolla"
+type: "Sedan"
+color: "Red"
+costPerDay: 50.0
+vinCode: "VIN123"
+releaseYear: 2022
+id: "ecf92012-1ebf-4cb9-935e-6dc09c626b0e"
+created_at: "2024-11-08T13:28:21.1255167"

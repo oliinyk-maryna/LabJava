@@ -1,8 +1,12 @@
-package lab02;
+package lab04;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.UUID;
+
 
 /**
  * Class representing a rental agreement in the car rental system.
@@ -10,21 +14,25 @@ import java.util.UUID;
  * daily price, and payment details.
  */
 public class Agreement implements Comparable<Agreement> {
-    private final UUID id;                  // Unique ID of the agreement
-    private final Car car;                   // The car being rented
-    private final Renter renter;             // The customer renting the car
-    private final LocalDate startDate;       // The start date of the rental
-    private final LocalDate endDate;         // The end date of the rental
-    private final double dailyPrice;         // The daily price of the rental
-    private final Payment payment;            // Payment information for the rental
+    private final UUID id;
+    private final Car car;
+    private final Renter renter;
+    private final LocalDate startDate;
+    private final LocalDate endDate;
+    private final Payment payment;
 
-    public Agreement(Car car, Renter renter, LocalDate startDate, LocalDate endDate, double dailyPrice, Payment payment) {
-        this.id = UUID.randomUUID();          // Generate a unique ID for the agreement
+    @JsonCreator
+    public Agreement(
+            @JsonProperty("car") Car car,
+            @JsonProperty("renter") Renter renter,
+            @JsonProperty("startDate") LocalDate startDate,
+            @JsonProperty("endDate") LocalDate endDate,
+            @JsonProperty("payment") Payment payment) {
+        this.id = UUID.randomUUID();
         this.car = car;
         this.renter = renter;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.dailyPrice = dailyPrice;
         this.payment = payment;
     }
 
@@ -32,10 +40,7 @@ public class Agreement implements Comparable<Agreement> {
         return id;
     }
 
-    /**
-     * Gets the car associated with the agreement.
-     * @return The car being rented.
-     */
+    @JsonProperty("getCar")
     public Car getCar() {
         return car;
     }
@@ -65,14 +70,6 @@ public class Agreement implements Comparable<Agreement> {
     }
 
     /**
-     * Gets the daily rental price.
-     * @return The daily price of the rental.
-     */
-    public double getDailyPrice() {
-        return dailyPrice;
-    }
-
-    /**
      * Gets the payment information for the rental.
      * @return The payment details.
      */
@@ -80,13 +77,11 @@ public class Agreement implements Comparable<Agreement> {
         return payment;
     }
 
-    /**
-     * Calculates the total rental cost based on the rental period and daily price.
-     * @return The total price for the rental.
-     */
+
+    @JsonProperty("totalPrice")
     public double getTotalPrice() {
         long rentalDays = endDate.toEpochDay() - startDate.toEpochDay();
-        return dailyPrice * rentalDays;
+        return car.getCostPerDay() * rentalDays;
     }
 
     /**
@@ -101,7 +96,6 @@ public class Agreement implements Comparable<Agreement> {
                 ", customer=" + renter.toString() +
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
-                ", dailyPrice=" + dailyPrice +
                 ", totalPrice=" + getTotalPrice() +
                 ", payment=" + payment.toString() +
                 '}';
@@ -116,9 +110,10 @@ public class Agreement implements Comparable<Agreement> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         Agreement that = (Agreement) o;
-        return Double.compare(that.dailyPrice, dailyPrice) == 0 &&
-                Objects.equals(id, that.id) &&               // Compare UUIDs for equality
+
+        return Objects.equals(id, that.id) &&
                 Objects.equals(car, that.car) &&
                 Objects.equals(renter, that.renter) &&
                 Objects.equals(startDate, that.startDate) &&
@@ -132,7 +127,7 @@ public class Agreement implements Comparable<Agreement> {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(id, car, renter, startDate, endDate, dailyPrice, payment); // Include UUID in hashCode
+        return Objects.hash(id, car, renter, startDate, endDate, payment); // Include UUID in hashCode
     }
 
     @Override
@@ -142,7 +137,7 @@ public class Agreement implements Comparable<Agreement> {
             result = this.endDate.compareTo(other.endDate);
         }
         if (result == 0) {
-            result = Double.compare(this.dailyPrice, other.dailyPrice);
+            result = Double.compare(this.getTotalPrice(), other.getTotalPrice());
         }
         if (result == 0) {
             result = this.car.getBrand().compareTo(other.car.getBrand());

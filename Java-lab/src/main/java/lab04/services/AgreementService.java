@@ -1,12 +1,15 @@
-package lab02.services;
+package lab04.services;
 
-import lab02.Agreement;
+import lab05.Agreement;
 
+import java.time.temporal.ChronoUnit;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.Comparator;
-import java.time.temporal.ChronoUnit;
 
+/**
+ * AgreementService provides methods for operations on collections of Agreement objects.
+ */
 public class AgreementService {
 
     private List<Agreement> agreements;
